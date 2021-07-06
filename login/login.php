@@ -75,7 +75,7 @@
                 var password = document.getElementById("inputPassword").value;
                 $.get("api.php", {functionName:"login", email:email, password:password }, function(data){
                     if(data === password){
-                        window.location.href = "map.php";
+                        window.location.href = "../map/map.php";
                     }
                 });
             });

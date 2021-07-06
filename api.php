@@ -16,4 +16,17 @@ if ($_REQUEST['functionName'] == 'profile') {
     $response_data = json_decode($json_data,true);
     echo($response_data['data']);
 }
+
+if ($_REQUEST['functionName'] == 'insert') {
+    //
+}
+
+if ($_REQUEST['functionName'] == 'newGuard') {
+    //
+}
+
+if ($_REQUEST['functionName'] == 'newBand') {
+    //
+}
+
 ?>
