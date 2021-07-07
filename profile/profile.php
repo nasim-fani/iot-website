@@ -31,7 +31,11 @@
                 </ol>
               </nav>
               <!-- /Navbar -->
-        
+
+              <!-- Map -->
+              <div id="map"><script src="map.js"></script></div>
+              <!-- /Map -->
+              
               <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
                   <div class="card">

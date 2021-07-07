@@ -22,11 +22,30 @@ if ($_REQUEST['functionName'] == 'insert') {
 }
 
 if ($_REQUEST['functionName'] == 'newGuard') {
-    //
+    $name = $_REQUEST['name'];
+    $id = $_REQUEST['id'];
+    $api_url = '/api/v1/employee/' ;
+    $data = array('name' => $name, 'id' =>$id);
+
+    $options = array(
+        'http' => array(
+            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method'  => 'POST',
+            'content' => http_build_query($data)
+        )
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($api_url, false, $context);
+    if ($result === FALSE) { /* Handle error */ }
+    var_dump($result);
 }
 
 if ($_REQUEST['functionName'] == 'newBand') {
     //
 }
 
+if ($_REQUEST['functionName'] == 'delete') {
+    //delete a row in map page
+    //params = band=band1&name=guard1 
+}
 ?>
