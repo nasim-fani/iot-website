@@ -37,8 +37,8 @@
                                             <label for="exampleInputPassword1">Password</label>
                                             <input type="password" class="form-control" id="inputPassword">
                                         </div>
-                                        <button type="submit" id="login_btn" class="btn btn-theme">Login</button>
-                                        <a href="#l" class="forgot-link float-right text-primary">Forgot password?</a>
+                                        <button type="reset" id="login_btn" class="btn btn-theme">Login</button>
+                                       
                                     </form>
                                 </div>
                             </div>
@@ -59,8 +59,6 @@
                 </div>
                 <!-- end card -->
     
-                <p class="text-muted text-center mt-3 mb-0">Don't have an account? <a href="#" class="text-primary ml-1">register</a></p>
-    
                 <!-- end row -->
     
             </div>
@@ -72,11 +70,11 @@
     <script> 
         $('#login_btn').click(function() {
                 var email = document.getElementById("inputEmail").value;
-                var password = document.getElementById("inputPassword").value;
-                $.get("api.php", {functionName:"login", email:email, password:password }, function(data){
-                    if(data === password){
+                var password = document.getElementById("inputPassword").value;               
+                $.get(".../api.php", {functionName:"login", email:email, password:password }, function(data){
+                    // if(data === 1){
                         window.location.href = "../map/map.php";
-                    }
+                    // }
                 });
             });
         </script>

@@ -18,11 +18,28 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="map.css">
 </head>
 
 <body>
-      <?php    
+      
+    <div class="container">
+        <div class="main-body">      
+              <!-- Navbar -->
+              <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">map</li>   
+                  <li class="ml-auto"><a href="#"><i data-feather="circle"></i></a></li>                 
+                </ol>                   
+              </nav>
+              <!-- /Navbar -->
+    <div id="map"><script src="map.js"></script></div>
+    <div id="content"><div class="card mb-3">
+        <div class="card-body">
+        <?php    
+        error_reporting(0);
       $api_url = '/api/v1/employees' ;
       $json_data = file_get_contents($api_url);
       $arr = json_decode($json_data,true);
@@ -31,43 +48,45 @@
         $band = $item['band'];
         echo ('
           <div class="row">
-            <div class="col-sm-2" align="center">
-              <h5 class="mb-0">'.$band.'</h5>
+            <div class="col-sm-3" align="center">
+              <h4 class="mb-0">'.$band.'</h4>
             </div>
             <div class="col-sm-6 text-secondary" align="center">
             '.$name.'
             </div>
-            <div class="col-sm-2 text-secondary" align="center">
-                <a class="btn btn-info btn-lg " target="__blank" href="../reassign/reassign.php?band='.$band.'&name='.$name.'">Edit</a>
+            <div class="col-sm-1 text-secondary" align="center">
+                <a class="btn btn-info btn-lg " href="../reassign/reassign.php?band='.$band.'&name='.$name.'">Edit</a>
             </div>
-            <div class="col-sm-2 text-secondary" align="center">
-                <a class="btn btn-danger btn-lg " target="__blank" href="band='.$band.'&name='.$name.'">delete</a>
+            <div class="col-sm-1 text-secondary" align="center">
+                <a class="btn btn-danger btn-lg " href="band='.$band.'&name='.$name.'">delete</a>
             </div>
           </div>
           <hr>
         ');
     }
     ?>
-    <div class="container">
-        <div class="main-body">      
-              <!-- Navbar -->
-              <nav aria-label="breadcrumb" class="main-breadcrumb">
-                <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="#">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">map</li>
-                </ol>
-              </nav>
-              <!-- /Navbar -->
-    <div id="map"><script src="map.js"></script></div>
-    <div id="content"><div class="card mb-3">
-        <div class="card-body">
-          
-          <div class="row" align="center">
-            <div class="col-sm-12">
-              <a class="btn btn-info btn-lg " target="__blank" href="../insert/insert.php">+ Insert a new row</a>
-              
+    <div class="row">
+            <div class="col-sm-3" align="center">
+              <h4 class="mb-0">band1</h4>
+            </div>
+            <div class="col-sm-6 text-secondary" align="center">
+            guard1
+            </div>
+            <div class="col-sm-1 text-secondary" align="center">
+                <a class="btn btn-info btn-lg " href="../reassign/reassign.php?band=band1&name=gaurd2">Edit</a>
+            </div>
+            <div class="col-sm-1 text-secondary" align="center">
+                <a class="btn btn-danger btn-lg " href="band=band1&name=gaurd1">delete</a>
             </div>
           </div>
+          <hr>
+
+          <div class="row" align="center">
+            <div class="col-sm-12">
+              <a class="btn btn-info btn-lg " href="../insert/insert.php">+ Insert a new row</a>              
+            </div>
+          </div>
+
         </div>
       </div>
       </div>
