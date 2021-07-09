@@ -32,15 +32,16 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="mb-5">
-                                        <h3 class="h4 font-weight-bold text-theme">Change gaurd's name for band <?php echo $_GET['band']?></h3>
+                                        <h3 class="h4 font-weight-bold text-theme">Change guard for band <?php echo $_GET['band']?></h3>
                                     </div>
-                                    <p class="text-muted mt-2 mb-5">Enter gaurd id</p>  
+                                    <p class="text-muted mt-2 mb-5">Enter gaurd's id</p>  
                                     <form>
                                         <div class="form-group">
                                             <label for="bandId">gaurd ID</label>
-                                            <input type="text" class="form-control" id="gaurd">
+                                            <input type="text" class="form-control" id="guard">
                                         </div>
-                                        <button type="submit" id="change" class="btn btn-theme">Submit</button>
+                                        <button type="reset" id="change" class="btn btn-theme">Submit</button>
+                                        <button type="reset" id="back" class="btn btn-theme">Back</button>
                                     </form>
                                 </div>
                             </div>
@@ -60,12 +61,19 @@
         $('#change').click(function() {
             let searchParams = new URLSearchParams(window.location.search);
             let band = searchParams.get('band')
-            var gaurd = document.getElementById("gaurd").value;
-            $.get("../api.php", {functionName:"reassign", gaurd:gaurd, band:band }, function(data){
-                //check
-                window.location.href = "../map/map.php";
+            var guard = document.getElementById("guard").value;
+            $.get("../api.php", {functionName:"reassign", guard:guard, band:band }, function(data){
+                if(data!=="edited"){
+                    data = "guard has already been asigned to a band. try again!"
+                }
+                alert(data);
             });
         });
+
+        $('#back').click(function() {
+            window.location.href = "../map/map.php";
+        });
+        
     </script>
 </html>
 

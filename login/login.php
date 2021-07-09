@@ -26,11 +26,11 @@
                                     </div>
     
                                     <h6 class="h5 mb-0">Welcome!</h6>
-                                    <p class="text-muted mt-2 mb-5">Enter your email address and password to access your panel.</p>
+                                    <p class="text-muted mt-2 mb-5">Enter your username and password to access your panel.</p>
     
                                     <form>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
+                                            <label for="exampleInputEmail1">Username</label>
                                             <input type="email" class="form-control" id="inputEmail">
                                         </div>
                                         <div class="form-group mb-5">
@@ -69,12 +69,15 @@
 </body>
     <script> 
         $('#login_btn').click(function() {
-                var email = document.getElementById("inputEmail").value;
+                var username = document.getElementById("inputEmail").value;
                 var password = document.getElementById("inputPassword").value;               
-                $.get(".../api.php", {functionName:"login", email:email, password:password }, function(data){
-                    // if(data === 1){
+                $.get("../api.php", {functionName:"login", username:username, password:password }, function(data){
+                    if(data === "login successful"){
                         window.location.href = "../map/map.php";
-                    // }
+                    }
+                    else {
+                        alert("authentication failed");
+                    }
                 });
             });
         </script>

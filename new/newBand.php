@@ -17,7 +17,7 @@
                   <!-- Navbar -->
                   <nav aria-label="breadcrumb" class="main-breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item"><a href="../map/map.php">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">insert new Band</li>
                 </ol>
               </nav>
@@ -32,7 +32,7 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="mb-5">
-                                        <h3 class="h4 font-weight-bold text-theme">Insert new Bnad</h3>
+                                        <h3 class="h4 font-weight-bold text-theme">Insert new Band</h3>
                                     </div>
                                     <p class="text-muted mt-2 mb-5">Enter band id</p>  
                                     <form>
@@ -40,7 +40,8 @@
                                             <label for="bandId">Band ID</label>
                                             <input type="text" class="form-control" id="bandId">
                                         </div>
-                                        <button type="submit" id="insert" class="btn btn-theme">Submit</button>
+                                        <button type="reset" id="insert" class="btn btn-theme">Submit</button>
+                                        <button type="reset" id="back" class="btn btn-theme">back</button>
                                     </form>
                                 </div>
                             </div>
@@ -59,12 +60,23 @@
     <script> 
         $('#insert').click(function() {
                 var bandId = document.getElementById("bandId").value;
-                $.get("../api.php", {functionName:"newBnad", bandId:bandId }, function(data){
-                    //check
-                    window.location.href = "../map/map.php";
+                if($.isNumeric(bandId)){
+                $.get("../api.php", {functionName:"newBand", id:bandId }, function(data){
+                    if(data!=="Registered Successfully"){
+                        data = "band's ID is duplicated";
+                    }
+                    alert(data);
                 });
+            }
+            else{
+                alert("band's ID must be a number");
+            }
             });
-        </script>
+
+        $('#back').click(function() {
+            window.location.href = "../map/map.php";
+        });
+    </script>
 </html>
 
 
